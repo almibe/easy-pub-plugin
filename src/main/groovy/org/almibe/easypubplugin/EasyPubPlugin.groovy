@@ -7,6 +7,7 @@ import org.gradle.api.tasks.bundling.Jar
 
 class EasyPubPlugin implements Plugin<Project> {
     void apply(Project project) {
+        project.apply plugin: 'java'
         project.apply plugin: 'maven'
         project.apply plugin: 'maven-publish'
         project.apply plugin: 'com.jfrog.bintray'
