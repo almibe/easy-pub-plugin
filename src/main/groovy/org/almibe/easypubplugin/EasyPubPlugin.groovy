@@ -2,32 +2,34 @@ package org.almibe.easypubplugin
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.tasks.bundling.Jar
 
 class EasyPubPlugin implements Plugin<Project> {
     void apply(Project project) {
         project.apply plugin: 'maven'
         project.apply plugin: 'maven-publish'
-        project.apply plugin: id "com.jfrog.bintray" version "1.7.3"
+        project.apply plugin: 'com.jfrog.bintray'
 
-        project.task('sourcesJar', type: Jar, dependsOn: classes) {
+        project.task('sourcesJar', type: Jar, dependsOn: 'classes') {
             classifier = 'sources'
-            from sourceSets.main.allSource
+            from project.sourceSets.main.allSource
         }
 
-        project.task('javadocJar', type: Jar, dependsOn: javadoc) {
+        project.task('javadocJar', type: Jar, dependsOn: 'javadoc') {
             classifier = 'javadoc'
-            from javadoc.destinationDir
+            from project.javadoc.destinationDir
         }
 
         project.publishing {
             publications {
                 MyPublication(MavenPublication) {
-                    from components.java
-                    artifact sourcesJar
-                    artifact javadocJar
-                    groupId 'org.libraryweasel'
-                    artifactId 'library-weasel-gradle-plugin'
-                    version '0.1.0'
+                    from project.components.java
+                    artifact project.sourcesJar
+                    artifact project.javadocJar
+                    groupId project.group
+                    artifactId project.name
+                    version project.version
                 }
             }
         }
@@ -45,7 +47,7 @@ class EasyPubPlugin implements Plugin<Project> {
             }
             pkg {
                 version {
-                    name = version
+                    name = project.version
                 }
             }
         }

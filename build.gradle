@@ -1,8 +1,18 @@
-plugins {
-    id 'groovy'
-    id 'java'
-    id 'maven'
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.almibe:easy-pub-plugin:0.1.0-SNAPSHOT'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3' //not sure if I need this
+    }
 }
+
+apply plugin: 'org.almibe.easypubplugin'
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'maven'
 
 group 'org.almibe'
 version '0.1.0-SNAPSHOT'
@@ -11,10 +21,12 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    mavenLocal()
+    jcenter()
 }
 
 dependencies {
     compile gradleApi()
     compile 'org.codehaus.groovy:groovy-all:2.4.7'
+    compile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3' //not sure if I need this
 }
