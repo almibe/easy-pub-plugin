@@ -36,14 +36,14 @@ class EasyPubPlugin implements Plugin<Project> {
         }
 
         project.bintray {
-            user = project.property('bintray.user')
-            key = project.property('bintray.key')
+            user = project.hasProperty('bintray.user') ? project.property('bintray.user') : System.getenv('bintray.user')
+            key = project.hasProperty('bintray.key') ? project.hasProperty('bintray.key') : System.getenv('bintray.key')
             publications = ['MyPublication']
             pkg {
                 repo = 'maven'
                 name = project.name
-                userOrg = project.property('bintray.user')
-                licenses = [project.property('licenses')]
+                userOrg = project.hasProperty('bintray.user') ? project.property('bintray.user') : System.getenv('bintray.user')
+                licenses = project.property('licenses').tokenize(',')
                 vcsUrl = project.property('vcsUrl')
             }
             pkg {
