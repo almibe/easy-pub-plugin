@@ -41,10 +41,10 @@ class EasyPubPlugin implements Plugin<Project> {
             publications = ['MyPublication']
             pkg {
                 repo = 'maven'
-                name = 'library-weasel-gradle-plugin'
+                name = project.name
                 userOrg = project.property('bintray.user')
-                licenses = ['Mozilla Public License 2.0']
-                vcsUrl = 'https://github.com/almibe/library-weasel-gradle-plugin.git'
+                licenses = project.ext.licenses
+                vcsUrl = project.ext.vcsUrl
             }
             pkg {
                 version {
