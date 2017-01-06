@@ -5,7 +5,6 @@ buildscript {
     }
     dependencies {
         classpath 'org.almibe:easy-pub-plugin:0.1.0-SNAPSHOT'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3' //not sure if I need this
     }
 }
 
@@ -28,5 +27,5 @@ repositories {
 dependencies {
     compile gradleApi()
     compile 'org.codehaus.groovy:groovy-all:2.4.7'
-    compile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3' //not sure if I need this
+    compile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
 }
