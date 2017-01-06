@@ -15,8 +15,6 @@ apply plugin: 'maven'
 
 group 'org.almibe'
 version '0.1.0'
-ext.licenses = ['Apache Public License 2.0']
-ext.vcsUrl = 'https://github.com/almibe/easy-pub-plugin.git'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

@@ -43,8 +43,8 @@ class EasyPubPlugin implements Plugin<Project> {
                 repo = 'maven'
                 name = project.name
                 userOrg = project.property('bintray.user')
-                licenses = project.ext.licenses
-                vcsUrl = project.ext.vcsUrl
+                licenses = [project.property('licenses')]
+                vcsUrl = project.property('vcsUrl')
             }
             pkg {
                 version {
