@@ -42,13 +42,12 @@ class EasyPubPlugin implements Plugin<Project> {
             pkg {
                 repo = 'maven'
                 name = project.name
-                userOrg = project.hasProperty('bintray.user') ? project.property('bintray.user') : System.getenv('bintray.user')
                 licenses = project.property('licenses').tokenize(',')
                 vcsUrl = project.property('vcsUrl')
-            }
-            pkg {
                 version {
                     name = project.version
+                    released  = new Date()
+                    vcsTag = project.version
                 }
             }
         }
