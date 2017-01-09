@@ -37,7 +37,7 @@ class EasyPubPlugin implements Plugin<Project> {
 
         project.bintray {
             user = project.hasProperty('bintray.user') ? project.property('bintray.user') : System.getenv('bintray.user')
-            key = project.hasProperty('bintray.key') ? project.hasProperty('bintray.key') : System.getenv('bintray.key')
+            key = project.hasProperty('bintray.key') ? project.property('bintray.key') : System.getenv('bintray.key')
             publications = ['MyPublication']
             pkg {
                 repo = 'maven'
